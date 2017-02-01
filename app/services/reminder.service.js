@@ -8,31 +8,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/**
+ * Created by Adrian on 01/02/2017.
+ */
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var app_component_1 = require('./app.component');
-var reminder_component_1 = require('./reminder.component');
-var reminder_service_1 = require("./services/reminder.service");
-var AppModule = (function () {
-    function AppModule() {
+var mock_reminders_1 = require('../../base/mock-reminders');
+var ReminderService = (function () {
+    function ReminderService() {
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [
-                app_component_1.AppComponent,
-                reminder_component_1.ReminderComponent
-            ],
-            bootstrap: [
-                app_component_1.AppComponent
-            ],
-            providers: [
-                reminder_service_1.ReminderService
-            ]
-        }), 
+    ReminderService.prototype.getReminders = function () {
+        return Promise.resolve(mock_reminders_1.REMINDERS);
+    };
+    ReminderService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], ReminderService);
+    return ReminderService;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.ReminderService = ReminderService;
+//# sourceMappingURL=reminder.service.js.map

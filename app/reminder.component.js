@@ -8,31 +8,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/**
+ * Created by Adrian on 01/02/2017.
+ */
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var app_component_1 = require('./app.component');
-var reminder_component_1 = require('./reminder.component');
 var reminder_service_1 = require("./services/reminder.service");
-var AppModule = (function () {
-    function AppModule() {
+var ReminderComponent = (function () {
+    function ReminderComponent(reminderService) {
+        this.reminderService = reminderService;
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [
-                app_component_1.AppComponent,
-                reminder_component_1.ReminderComponent
-            ],
-            bootstrap: [
-                app_component_1.AppComponent
-            ],
-            providers: [
-                reminder_service_1.ReminderService
-            ]
+    ReminderComponent.prototype.getReminders = function () {
+        var _this = this;
+        this.reminderService.getReminders().then(function (reminders) { return _this.reminders = reminders; });
+    };
+    ReminderComponent.prototype.ngOnInit = function () {
+        this.getReminders();
+    };
+    ReminderComponent = __decorate([
+        core_1.Component({
+            selector: 'reminder',
+            templateUrl: './html-templates/reminder.template.html',
         }), 
-        __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+        __metadata('design:paramtypes', [reminder_service_1.ReminderService])
+    ], ReminderComponent);
+    return ReminderComponent;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.ReminderComponent = ReminderComponent;
+//# sourceMappingURL=reminder.component.js.map
