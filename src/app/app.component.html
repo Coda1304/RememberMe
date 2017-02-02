@@ -1,0 +1,19 @@
+<h1>
+  {{title}}
+</h1>
+
+<h2>Your todo list</h2>
+<ul>
+
+
+<div *ngFor="let reminder of reminders">
+  <li>
+    <label>
+      {{reminder.id}}
+    </label>
+    <span>{{reminder.title}}</span> {{reminder.detail}}
+  </li>
+
+</div>
+</ul>
+
